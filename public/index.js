@@ -7,7 +7,7 @@ fetch("/api/transaction")
   .then(response => response.json())
   .then(data => {
     transactions.push(data);
-    console.log(transactions[0]);
+    console.log(transactions[0].value);
     populateTotal();
     populateTable();
     populateChart();
