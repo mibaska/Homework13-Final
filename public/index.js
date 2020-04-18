@@ -119,6 +119,7 @@ function sendTransaction(isAdding) {
         console.log("beth");
         errorEl.textContent = "Missing Information";
       } else {
+        saveRecord(transaction);
         nameEl.value = "";
         amountEl.value = "";
       }
