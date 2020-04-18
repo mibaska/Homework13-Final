@@ -106,13 +106,15 @@ function sendTransaction(isAdding) {
 
   transactions.unshift(transaction);
 
+  console.log("3", transaction);
+
   populateChart();
   populateTable();
   populateTotal();
 
   fetch("/api/transaction", {
     method: "POST",
-    body: JSON.stringify(transaction),
+    body: JSON.stringify(data),
     headers: {
       Accept: "application/json, text/plain, */*",
       "Content-Type": "application/json"
@@ -127,7 +129,7 @@ function sendTransaction(isAdding) {
         errorEl.textContent = "Missing Information";
       } else {
         console.log("gimel");
-        saveRecord(transaction);
+        saveRecord(data);
         console.log("daleth");
         nameEl.value = "";
         amountEl.value = "";
@@ -135,7 +137,7 @@ function sendTransaction(isAdding) {
       }
     })
     .catch(err => {
-      saveRecord(transaction);
+      saveRecord(data);
 
       nameEl.value = "";
       amountEl.value = "";
