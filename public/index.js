@@ -114,7 +114,7 @@ function sendTransaction(isAdding) {
 
   fetch("/api/transaction", {
     method: "POST",
-    body: JSON.stringify(data),
+    body: JSON.stringify(transaction),
     headers: {
       Accept: "application/json, text/plain, */*",
       "Content-Type": "application/json"
@@ -129,7 +129,7 @@ function sendTransaction(isAdding) {
         errorEl.textContent = "Missing Information";
       } else {
         console.log("gimel");
-        saveRecord(data);
+        saveRecord(transaction);
         console.log("daleth");
         nameEl.value = "";
         amountEl.value = "";
@@ -137,7 +137,7 @@ function sendTransaction(isAdding) {
       }
     })
     .catch(err => {
-      saveRecord(data);
+      saveRecord(transaction);
 
       nameEl.value = "";
       amountEl.value = "";
