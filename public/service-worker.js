@@ -45,9 +45,19 @@ self.addEventListener("fetch", event => {
               cache.put(event.request.url, response.clone());
             }
             return response;
-          }).catch(err => {return cache.match(event.request);});
-        }).catch(err => console.log(err))
+          }).catch(err => {
+            return cache.match(event.request);
+          });
+        });
       })
     );
+    return;
   }
+  event.respondWith(
+    caches.open(PRECACHE).then(cache => {
+      return cache.match(event.request).then(response => {
+        return response || fetch(event.request);
+      });
+    })
+  );
 });
