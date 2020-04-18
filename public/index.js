@@ -15,16 +15,8 @@ fetch("/api/transaction")
   });
 
 function populateTotal() {
-  for(i = 0; i < transactions.length; i++) {
-    console.log(transactions[i]);
-    var value = parseInt(transactions[i]);
-    valueArray.push(value);
-  }
-  console.log(valueArray);
-  var total = valueArray.forEach(t => {
-    console.log(t);
-    total + t;
-    return total;
+  const total = transactions.reduce((total, t) => {
+    return total + parseInt(t.value);
   }, 0);
 
   const totalEl = document.querySelector("#total");
