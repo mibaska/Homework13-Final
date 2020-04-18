@@ -4,18 +4,19 @@ let myChart;
 fetch("/api/transaction")
   .then(response => response.json())
   .then(data => {
+    var testArray = transactions[0];
+    var finalArray = testArray[0];
     transactions.push(data);
     console.log("1", transactions[0][0]);
-    console.log("2", transactions[0][0][0]);
+    console.log("2", finalArray);
     populateTotal();
     populateTable();
     populateChart();
   });
 
 function populateTotal() {
-  var testArray = transactions[0];
   console.log("3", testArray[0]);
-  const total = transactions.reduce((total, t) => {
+  const total = finalArray.reduce((total, t) => {
     return total + parseInt(t.value);
   }, 0);
 
