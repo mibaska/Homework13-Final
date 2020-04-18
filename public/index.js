@@ -6,7 +6,7 @@ let i;
 fetch("/api/transaction")
   .then(response => response.json())
   .then(data => {
-    transactions[0].push(data);
+    transactions.push(data);
     console.log("1", transactions[0][0]);
     populateTotal();
     populateTable();
@@ -14,6 +14,7 @@ fetch("/api/transaction")
   });
 
 function populateTotal() {
+  console.log(transactions[0].length);
   const total = transactions[0].reduce((total, t) => {
     return total + parseInt(t.value);
   }, 0);
