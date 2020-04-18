@@ -5,9 +5,9 @@ let myChart;
 fetch("/api/transaction")
   .then(response => response.json())
   .then(data => {
-    testArray.push(data);
-    console.log("1", transactions[0]);
-    console.log("2");
+    console.log("1", testArray)
+    transactions.push(data);
+    console.log("2", transactions[0]);
     populateTotal();
     populateTable();
     populateChart();
@@ -27,7 +27,7 @@ function populateTable() {
   const tbody = document.querySelector("#tbody");
   tbody.innerHTML = "";
 
-  transactions.forEach(transaction => {
+  testArray.forEach(transaction => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${transaction.name}</td>
@@ -39,7 +39,7 @@ function populateTable() {
 }
 
 function populateChart() {
-  const reversed = transactions.slice().reverse();
+  const reversed = testArray.slice().reverse();
   let sum = 0;
 
   const labels = reversed.map(t => {
@@ -96,7 +96,7 @@ function sendTransaction(isAdding) {
     transaction.value *= -1;
   }
 
-  transactions.unshift(transaction);
+  testArray.unshift(transaction);
 
   console.log("4", transaction);
 
