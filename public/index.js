@@ -1,11 +1,10 @@
 let transactions = [];
-let testArray = transactions[0];
 let myChart;
 
 fetch("/api/transaction")
   .then(response => response.json())
   .then(data => {
-    console.log("1", testArray)
+    console.log("1", data)
     transactions.push(data);
     console.log("2", transactions[0]);
     populateTotal();
@@ -14,6 +13,7 @@ fetch("/api/transaction")
   });
 
 function populateTotal() {
+  let testArray = transactions[0];
   let total = testArray.reduce((total, t) => {
     console.log("3", t.value);
     return total + parseInt(t.value);
@@ -27,7 +27,7 @@ function populateTable() {
   const tbody = document.querySelector("#tbody");
   tbody.innerHTML = "";
 
-  testArray.forEach(transaction => {
+  transactions.forEach(transaction => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${transaction.name}</td>
@@ -39,7 +39,7 @@ function populateTable() {
 }
 
 function populateChart() {
-  const reversed = testArray.slice().reverse();
+  const reversed = transactions.slice().reverse();
   let sum = 0;
 
   const labels = reversed.map(t => {
@@ -96,7 +96,7 @@ function sendTransaction(isAdding) {
     transaction.value *= -1;
   }
 
-  testArray.unshift(transaction);
+  transactions.unshift(transaction);
 
   console.log("4", transaction);
 
