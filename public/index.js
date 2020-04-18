@@ -14,7 +14,7 @@ fetch("/api/transaction")
 
 function populateTotal() {
   var testArray = transactions[0];
-  console.log("3", testArray);
+  console.log("3", testArray[0]);
   const total = transactions.reduce((total, t) => {
     return total + parseInt(t.value);
   }, 0);
