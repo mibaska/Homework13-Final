@@ -103,7 +103,7 @@ function sendTransaction(isAdding) {
   populateTable();
   populateTotal();
 
-  fetch("/", {
+  fetch("/api/transaction", {
     method: "POST",
     body: JSON.stringify(transaction),
     headers: {
