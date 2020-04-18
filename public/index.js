@@ -117,6 +117,7 @@ function sendTransaction(isAdding) {
       console.log("loazi", data);
       if (data.errors) {
         console.log("beth");
+        saveRecord(transaction);
         errorEl.textContent = "Missing Information";
       } else {
         saveRecord(transaction);
