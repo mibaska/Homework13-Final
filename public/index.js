@@ -4,8 +4,9 @@ let myChart;
 fetch("/api/transaction")
   .then(response => response.json())
   .then(data => {
-    transactions.push(data);
-    console.log("1", transactions[0][0]);
+    var testArray = transactions[0];
+    testArray.push(data);
+    console.log("1", transactions[0]);
     console.log("2");
     populateTotal();
     populateTable();
