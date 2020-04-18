@@ -1,7 +1,5 @@
 let transactions = [];
-let valueArray =[];
 let myChart;
-let i;
 
 fetch("/api/transaction")
   .then(response => response.json())
@@ -14,8 +12,9 @@ fetch("/api/transaction")
   });
 
 function populateTotal() {
-  console.log(transactions[0].length);
-  const total = transactions[0].reduce((total, t) => {
+  var testArray = transactions[0];
+  console.log("2", testArray);
+  const total = transactions.reduce((total, t) => {
     return total + parseInt(t.value);
   }, 0);
 
@@ -98,7 +97,7 @@ function sendTransaction(isAdding) {
 
   transactions.unshift(transaction);
 
-  console.log("2", transaction);
+  console.log("3", transaction);
 
   populateChart();
   populateTable();
