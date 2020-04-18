@@ -120,12 +120,8 @@ function sendTransaction(isAdding) {
         console.log("beth");
         errorEl.textContent = "Missing Information";
       } else {
-        console.log("gimel");
-        saveRecord(transaction);
-        console.log("daleth");
         nameEl.value = "";
         amountEl.value = "";
-        console.log("he");
       }
     })
     .catch(err => {
